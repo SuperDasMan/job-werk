@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-rows: 75px 1fr 1fr 1fr 1fr 100px;
+    gap: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.container div {
+    padding: 10px;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+.header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.search {
+    grid-row-start: 2;
+    grid-row-end: 6;
+}
+
+.hot-links {
+   grid-column-start: 3;
+   grid-column-end: 4;
+   grid-row-start: 2;
+   grid-row-end: 6;
+}
