@@ -1,16 +1,16 @@
 INSERT INTO industry (name)
 VALUES
-	('painting'),
-  ('plumbing'),
-  ('electrical'),
-  ('carpentry');
+	('Painting'),
+  ('Plumbing'),
+  ('Electrical'),
+  ('Carpentry');
   
-INSERT INTO job (title, description, pay_rate, industry_id)
+INSERT INTO job (title, description, pay_rate, job_id, industry_id)
 VALUES
-	('Painter Needed', 'We need a painter to touch up our home', '$300', 1),
-  ('Plumber ASAP', 'Our toilets are backed up and so are we! Please help!', '$500', 2),
-  ('Sparks are flying!', 'My husband tried to repair the fusebox by himself! Rewire needed!', '$200', 3),
-  ('Dining Room disaster', 'My kitchen table just broke in half! Need repair or replacement!', '$150', 4);
+	('Painter Needed', 'We need a painter to touch up our home', '$300', 1, 1),
+  ('Plumber ASAP', 'Our toilets are backed up and so are we! Please help!', '$500', 2, 2),
+  ('Sparks are flying!', 'My husband tried to repair the fusebox by himself! Rewire needed!', 3, '$200', 3),
+  ('Dining Room disaster', 'My kitchen table just broke in half! Need repair or replacement!', 4, '$150', 4);
   
 INSERT INTO user (first_name, last_name, username, email, password, phone_number, account_type, job_id)
 VALUES
