@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS industry;
-DROP TABLE IF EXISTS job;
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS job;
+DROP TABLE IF EXISTS industry;
 
 CREATE TABLE industry (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -11,7 +11,7 @@ CREATE TABLE job (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(50) NOT NULL,
   description VARCHAR(500) NOT NULL,
-  pay_rate INT NOT NULL,
+  pay_rate VARCHAR(10) NOT NULL,
   industry_id INT NOT NULL,
   INDEX ind_ind (industry_id),
   CONSTRAINT fk_industry FOREIGN KEY (industry_id) REFERENCES industry(id) ON DELETE CASCADE
@@ -24,12 +24,11 @@ CREATE TABLE user (
   username VARCHAR(30) NOT NULL,
   email VARCHAR(50) NOT NULL,
   password VARCHAR(30) NOT NULL,
+  phone_number VARCHAR(15),
+  INDEX phone_ind (phone_number),
   account_type BOOLEAN,
-
+  job_id INT,
   INDEX job_ind (job_id),
-  CONSTRAINT fk_job FOREIGN KEY (job_id) REFERENCES job(id) ON DELETE CASCADE,
-  manager_id INT,
-  INDEX manager_ind (manager_id),
-  CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employees(id) ON DELETE SET NULL
+  CONSTRAINT fk_job FOREIGN KEY (job_id) REFERENCES job(id) ON DELETE CASCADE
 );
 
