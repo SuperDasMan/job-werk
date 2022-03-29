@@ -6,7 +6,7 @@ body {
 .main-grid {
     display: grid;
     grid-template-columns: 300px 1fr 150px;
-    grid-template-rows: 100px repeat(10, 150px);
+    grid-template-rows: 1fr repeat(10, auto);
     grid-gap: 10px;
     color: white;
     text-decoration: solid;
@@ -14,13 +14,30 @@ body {
 }
 
 .nav-cont {
-    background-image: url("assets\images\hero.jpg");
+    background-image: url("/assets/images/hero.jpg");
+    width: 100vw;
     grid-column: 1 / 4;
-    border: solid white;
-}
+    background-size: cover;
+    height: 400px;
+    }
 
 .nav {
-    align-items: center;
+    padding-top: 1rem;
+    color: #fff;
+    text-align: center;
+}
+
+.nav a {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-decoration: none;
+    
+}
+
+.nav a:hover {
+    text-decoration: underline;
+    
 }
 
 .slogan {
@@ -39,35 +56,40 @@ body {
     text-align: center;
     padding: 1rem;
     border: solid white;
-    background-color: darkgray;
     }
 
 .elec-tile {
+    color: black;
     grid-row: 2 /3;
     text-align: center;
     border: solid black;
     justify-content: center;
+    background-image: url(/assets/images/images.jpg);
+    cursor: pointer;
 }
 
 .pnt-tile {
     grid-row: 3 / 4;
     text-align: center;
     border: solid black;
-    justify-content: center
+    justify-content: center;
+    background-image: url(/assets/images/images\ \(1\).jpg);
 }
 
 .plm-tile {
     grid-row: 4 / 5;
     text-align: center;
     border: solid black;
-    justify-content: center
+    justify-content: center;
+    background-image: url(/assets/images/download.jpg);
 }
 
 .crp-tile {
     grid-row: 5 / 6;
     text-align: center;
     border: solid black;
-    justify-content: center
+    justify-content: center;
+    background-image: url(/assets/images/images\ \(2\).jpg);
 }
 
 .res-cont {
