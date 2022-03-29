@@ -54,8 +54,7 @@ body {
     grid-template-rows: 150px repeat(5, 100px);
     grid-gap: 1rem;
     text-align: center;
-    padding: 1rem;
-    border: solid white;
+    padding: 1rem;  
     }
 
 .elec-tile {
@@ -71,10 +70,18 @@ body {
 .pnt-tile {
     grid-row: 3 / 4;
     text-align: center;
-    border: solid black;
     justify-content: center;
     background-image: url(/assets/images/images\ \(1\).jpg);
+    cursor: pointer;
 }
+
+.pnt-tile hover {
+    backdrop-filter: blur(10px);
+      filter: blur(4px);
+      transition: 0.5s ease;
+}
+
+
 
 .plm-tile {
     grid-row: 4 / 5;
@@ -82,6 +89,7 @@ body {
     border: solid black;
     justify-content: center;
     background-image: url(/assets/images/download.jpg);
+    cursor: pointer;
 }
 
 .crp-tile {
@@ -90,6 +98,7 @@ body {
     border: solid black;
     justify-content: center;
     background-image: url(/assets/images/images\ \(2\).jpg);
+    cursor: pointer;
 }
 
 .res-cont {
