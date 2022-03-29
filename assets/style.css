@@ -59,11 +59,12 @@ body {
 
 .elec-tile {
     color: black;
-    grid-row: 2 /3;
+    grid-row: 2 / 3;
     text-align: center;
-    border: solid black;
     justify-content: center;
     background-image: url(/assets/images/images.jpg);
+    background-size: cover;
+    height: 100%;
     cursor: pointer;
 }
 
@@ -72,7 +73,10 @@ body {
     text-align: center;
     justify-content: center;
     background-image: url(/assets/images/images\ \(1\).jpg);
+    background-size: cover;
     cursor: pointer;
+    color: black;
+    padding-top: 2rem;
 }
 
 .pnt-tile hover {
@@ -89,6 +93,7 @@ body {
     border: solid black;
     justify-content: center;
     background-image: url(/assets/images/download.jpg);
+    background-size: cover;
     cursor: pointer;
 }
 
