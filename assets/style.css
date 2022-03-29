@@ -14,7 +14,7 @@ body {
 }
 
 .nav-cont {
-    background-image: url("/assets/images/hero.jpg");
+    background-image: url("images/hero.jpg");
     width: 100vw;
     grid-column: 1 / 4;
     background-size: cover;
@@ -59,11 +59,12 @@ body {
 
 .elec-tile {
     color: black;
-    grid-row: 2 /3;
+    grid-row: 2 / 3;
     text-align: center;
-    border: solid black;
     justify-content: center;
-    background-image: url(/assets/images/images.jpg);
+    background-image: url(images/images.jpg);
+    background-size: cover;
+    height: 100%;
     cursor: pointer;
 }
 
@@ -71,8 +72,11 @@ body {
     grid-row: 3 / 4;
     text-align: center;
     justify-content: center;
-    background-image: url(/assets/images/images\ \(1\).jpg);
+    background-image: url(images/images\ \(1\).jpg);
+    background-size: cover;
     cursor: pointer;
+    color: black;
+    padding-top: 2rem;
 }
 
 .pnt-tile hover {
@@ -88,7 +92,8 @@ body {
     text-align: center;
     border: solid black;
     justify-content: center;
-    background-image: url(/assets/images/download.jpg);
+    background-image: url(images/download.jpg);
+    background-size: cover;
     cursor: pointer;
 }
 
@@ -97,7 +102,7 @@ body {
     text-align: center;
     border: solid black;
     justify-content: center;
-    background-image: url(/assets/images/images\ \(2\).jpg);
+    background-image: url(images/images\ \(2\).jpg);
     cursor: pointer;
 }
 
