@@ -1,12 +1,13 @@
 body {
     margin: 1rem;
-    background-color: #141414;
+    background-color: black;
 }
 
 .main-grid {
     display: grid;
+    background-color: black;
     grid-template-columns: 300px 1fr 150px;
-    grid-template-rows: 1fr repeat(10, auto);
+    grid-template-rows: 400px repeat(10, 1fr);
     grid-gap: 10px;
     color: white;
     text-decoration: solid;
@@ -42,78 +43,89 @@ body {
 
 .slogan {
     grid-column: 2 / 4;
-    border: solid white;
+    background-color: #141414;
     text-align: center;
 }
 
 .ind-cont {
+    background-color: #141414;
     grid-column: 1;
-    grid-row: 2 / 7;
+    grid-row: 2 / 6;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 150px repeat(5, 100px);
+    grid-template-rows: 200px repeat(5, 1fr);
     grid-gap: 1rem;
+    padding: 1rem;
     text-align: center;
-    padding: 1rem;  
     }
 
 .elec-tile {
     color: black;
-    grid-row: 2 / 3;
-    text-align: center;
-    justify-content: center;
-    background-image: url(images/images.jpg);
+    background-image: url(/assets/images/electrical.jpg);
     background-size: cover;
-    height: 100%;
+    grid-row: 2 / 3;
     cursor: pointer;
+    font-weight: bold;
+    padding: 2.5rem;
 }
+
+
 
 .pnt-tile {
     grid-row: 3 / 4;
-    text-align: center;
     justify-content: center;
-    background-image: url(images/images\ \(1\).jpg);
+    background-image: url(/assets/images/paint.jpg);
     background-size: cover;
     cursor: pointer;
+    background-position: center;
     color: black;
-    padding-top: 2rem;
+    font-weight: bold;
+    padding: 2.5rem;
 }
-
-.pnt-tile hover {
-    backdrop-filter: blur(10px);
-      filter: blur(4px);
-      transition: 0.5s ease;
-}
-
-
 
 .plm-tile {
     grid-row: 4 / 5;
     text-align: center;
-    border: solid black;
     justify-content: center;
-    background-image: url(images/download.jpg);
+    background-image: url(/assets/images/plumbing.jpg);
     background-size: cover;
     cursor: pointer;
+    color: black;
+    font-weight: bold;
+    padding: 2.5rem;
 }
 
 .crp-tile {
     grid-row: 5 / 6;
     text-align: center;
-    border: solid black;
     justify-content: center;
-    background-image: url(images/images\ \(2\).jpg);
+    background-image: url(/assets/images/carpentry.jpg);
     cursor: pointer;
+    color: black;
+    font-weight: bold;
+    padding: 2.5rem;
 }
 
 .res-cont {
+    background-color: #141414;
     grid-column: 2 / 3;
     grid-row: 3 / 11;
-    border: solid white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.res {
+    border: solid black;
+    text-align: center;
+    margin: 1%;
+    padding: 2.5rem;
 }
 
 .ratings {
     grid-column: 3 / 4;
     grid-row: 3 / 11;
-    border: solid white;
 }
