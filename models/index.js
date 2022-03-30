@@ -11,32 +11,26 @@ User.hasMany(Job, {
 
 Job.belongsTo(User, {
   foreignKey: "user_id",
-  onDelete: "SET NULL",
 });
 
 User.belongsToMany(Job, {
   through: Vote,
   as: "voted_jobs",
-
   foreignKey: "user_id",
-  onDelete: "SET NULL",
 });
 
 Job.belongsToMany(User, {
   through: Vote,
   as: "voted_jobs",
-  foreignKey: "job_id",
-  onDelete: "SET NULL",
+  foreignKey: "user_id",
 });
 
 Vote.belongsTo(User, {
   foreignKey: "user_id",
-  onDelete: "SET NULL",
 });
 
 Vote.belongsTo(Job, {
   foreignKey: "job_id",
-  onDelete: "SET NULL",
 });
 
 User.hasMany(Vote, {
@@ -47,23 +41,24 @@ Job.hasMany(Vote, {
   foreignKey: "job_id",
 });
 
-Industry.hasMany(User, {
+Industry.belongsToMany(User, {
+  through: Job,
+  as: "created_jobs",
   foreignKey: "job_id",
-  onDelete: "SET NULL",
 });
 
-Industry.hasMany(Job, {
-  foreignKey: "industry_id",
-  onDelete: "SET NULL",
+// Industry.hasMany(Job, {
+//   foreignKey: "industry_id",
+// });
+
+User.belongsToMany(Industry, {
+  through: Job,
+  as: "created jobs",
+  foreignKey: "user_id",
 });
 
-User.hasMany(Industry, {
-  foreignKey: "job_id",
-  onDelete: "SET NULL",
-});
+// Job.belongsTo(Industry, {
+//   foreignKey: "industry_id",
+// });
 
-Job.belongsTo(Industry, {
-  foreignKey: "industry_id",
-});
-
-module.exports = { User, Job, Vote, Industry };
+module.exports = { User, Industry, Job, Vote };

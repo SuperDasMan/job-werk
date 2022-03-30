@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Werk</title>
-    <link rel="stylesheet" href="./public/stylesheets/style.css" />
-  </head>
-  <body>
+<body>
     <div class="main-grid">
       <div class="nav-cont">
         <nav class="nav">
@@ -45,8 +36,14 @@
       </div>
       <div class="res-cont">
         <div class="results">Job Title 1</div>
+        <ol class="job-list">
+          {{#each jobs as |job|}}
+            <li>
+              {{> job-info job }}
+            </li>
+          {{/each}}
+        </ol>
       </div>
       <div class="ratings">Got feedback for a customer or worker?</div>
     </div>
   </body>
-</html>
