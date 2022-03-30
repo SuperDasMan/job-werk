@@ -1,0 +1,31 @@
+{
+  "name": "job-werk",
+  "version": "1.0.0",
+  "description": "An app to post and search jobs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuperDasMan/job-werk.git"
+  },
+  "author": "Josh West, Kris Kanger, Chandler Beck, and  Brandon Peterson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SuperDasMan/job-werk/issues"
+  },
+  "homepage": "https://github.com/SuperDasMan/job-werk#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "console.table": "^0.10.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "firebase": "^9.6.10",
+    "inquirer": "^8.2.1",
+    "jest": "^27.5.1",
+    "mysql2": "^2.3.3",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.17.0"
+  }
+}
