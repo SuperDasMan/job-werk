@@ -24,7 +24,7 @@ CREATE TABLE user (
   username VARCHAR(30) NOT NULL,
   email VARCHAR(50) NOT NULL,
   password VARCHAR(30) NOT NULL,
-  account_type BOOLEAN,
+  account_type BOOLEAN
 
   INDEX job_ind (job_id),
   CONSTRAINT fk_job FOREIGN KEY (job_id) REFERENCES job(id) ON DELETE CASCADE,

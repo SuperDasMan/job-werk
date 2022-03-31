@@ -1,11 +1,16 @@
 const router = require("express").Router();
-const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
-// const { getAuth, signInWithEmailAndPassword } = require("firebase/auth");
+const {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} = require("firebase/auth");
 const firebaseConfig = require("../config/firebase");
 const { initializeApp } = require("firebase/app");
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 const auth = getAuth();
 
+// Sign Up
 // router.post("/testSignUp", (req, res) => {
 //   const { email, password } = req.body;
 //   createUserWithEmailAndPassword(auth, email, password)
@@ -22,6 +27,7 @@ const auth = getAuth();
 //     });
 // });
 
+// Sign In
 // router.post("/testSignIn", (req, res) => {
 //   const { email, password } = req.body;
 //   signInWithEmailAndPassword(auth, email, password)
@@ -38,22 +44,17 @@ const auth = getAuth();
 //     });
 // });
 
-// signing users up
-const signupForm = document.querySelector("signup");
-signupForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const email = signupForm.email.value;
-  const password = signupForm.passowrd.value;
-
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log("user created", userCredential.user);
-      signupForm.reset();
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-});
+// Sign Out
+// router.post("/testSignOut", (req, res) => {
+//   signOut(auth)
+//     .then(() => {
+//       // Sign-out successful.
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       res.status(500);
+//     });
+// });
 
 module.exports = router;

@@ -1,3 +1,4 @@
+const cors = require("cors");
 const path = require("path");
 const express = require("express");
 
@@ -5,7 +6,7 @@ const express = require("express");
 // const exphbs = require('express-handlebars');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const routes = require("./routes");
+const routes = require("./routes/api");
 const sequelize = require("./config/connection");
 
 // const models = require("./models");
@@ -36,7 +37,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
-
+app.use(cors());
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
