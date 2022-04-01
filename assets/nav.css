@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.login-box {
+    width: 360px;
+    height: 360px;
+    margin: auto;
+    margin-top: 15px;
+    background-color: #141414;
+}
