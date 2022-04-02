@@ -1,24 +1,24 @@
 <article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <a href='/dashboard'> &larr; Back to dashboard</a>
   <h2>
     Edit Job
   </h2>
-  <form class="edit-job-form">
+  <form class='edit-job-form'>
     <div>
-      <input name="job-title" type="text" value="{{job.title}}" />
+      <input name='job-title' type='text' value='{{job.title}}' />
       <span>({{format_url job.job_url}})</span>
     </div>
     <div>
       {{job.vote_count}}
-      {{format_plural "point" job.vote_count}}
+      {{format_plural 'point' job.vote_count}}
       by you on
       {{format_date job.created_at}}
       |
     </div>
-    <button type="submit">Save job</button>
-    <button type="button" class="delete-job-btn">Delete job</button>
+    <button type='submit'>Save job</button>
+    <button type='button' class='delete-job-btn'>Delete job</button>
   </form>
 </article>
 
-<script src="/javascript/edit-job.js"></script>
-<script src="/javascript/delete-job.js"></script>
+<script src='/javascript/edit-job.js'></script>
+<script src='/javascript/delete-job.js'></script>

@@ -5,23 +5,23 @@ async function newFormHandler(event) {
   const job_url = document.querySelector('input[name="job-url"]').value;
 
   const response = await fetch(`/api/jobs`, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify({
       title,
       job_url,
     }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
   if (response.ok) {
-    document.location.replace("/dashboard");
+    document.location.replace('/dashboard');
   } else {
     alert(response.statusText);
   }
 }
 
 document
-  .querySelector(".new-job-form")
-  .addEventListener("submit", newFormHandler);
+  .querySelector('.new-job-form')
+  .addEventListener('submit', newFormHandler);

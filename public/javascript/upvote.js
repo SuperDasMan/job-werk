@@ -1,17 +1,17 @@
 async function upvoteClickHandler(event) {
   event.preventDefault();
 
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
   ];
 
-  const response = await fetch("/api/jobs/upvote", {
-    method: "PUT",
+  const response = await fetch('/api/jobs/upvote', {
+    method: 'PUT',
     body: JSON.stringify({
       job_id: id,
     }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -23,5 +23,5 @@ async function upvoteClickHandler(event) {
 }
 
 document
-  .querySelector(".upvote-btn")
-  .addEventListener("click", upvoteClickHandler);
+  .querySelector('.upvote-btn')
+  .addEventListener('click', upvoteClickHandler);
