@@ -1,10 +1,15 @@
 const router = require('express').Router();
-const { Industry, Job, Vote } = require('../../models');
+const {Job} = require('../../models');
 
 // get all jobs
 router.get('/', (req, res) => {
   Job.findAll({
-    include: [{ model: Industry }, { model: Job }],
+    attributes: [
+      'title',
+      'description', 
+      'pay_rate',  
+      'industry_id',
+    ]
   })
     .then((dbJobData) => res.json(dbJobData))
     .catch((err) => {
@@ -16,8 +21,12 @@ router.get('/', (req, res) => {
 // get one job
 router.get('/:id', (req, res) => {
   Job.findOne({
+    attributes: [
+      'title',
+      'description', 
+      'pay_rate', 
+      'industry_id',],
     where: { id: req.params.id },
-    include: [{ model: Industry }, { model: Job }],
   })
     .then((dbJobData) => {
       if (!dbJobData) {
