@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 // create our Job model
 class Job extends Model {
@@ -13,26 +13,26 @@ class Job extends Model {
           id: body.job_id,
         },
         attributes: [
-          "id",
-          "job_url",
-          "title",
-          "pay_rate",
+          'id',
+          'job_url',
+          'title',
+          'pay_rate',
           // "created_at",
           [
             sequelize.literal(
-              "(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)"
+              '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
             ),
-            "vote_count",
+            'vote_count',
           ],
         ],
         include: [
           {
             model: models.Industry,
-            attributes: ["id", "name"],
+            attributes: ['id', 'name'],
           },
           {
             model: models.User,
-            attributes: ["username"],
+            attributes: ['username'],
           },
         ],
       });
@@ -73,14 +73,14 @@ Job.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        modelName: "user",
-        key: "id",
+        modelName: 'user',
+        key: 'id',
       },
     },
     industry_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "industry",
+        model: 'industry',
       },
     },
   },
@@ -88,7 +88,7 @@ Job.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "job",
+    modelName: 'job',
   }
 );
 

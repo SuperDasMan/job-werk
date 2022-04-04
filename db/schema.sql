@@ -9,11 +9,11 @@ CREATE TABLE industry (
 
 CREATE TABLE user (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(30) NOT NULL,
-  last_name VARCHAR(30) NOT NULL,
+  first_name VARCHAR(30),
+  last_name VARCHAR(30),
   username VARCHAR(30) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  password VARCHAR(30) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   phone_number VARCHAR(15),
   INDEX phone_ind (phone_number),
   account_type BOOLEAN

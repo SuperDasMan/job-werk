@@ -1,6 +1,7 @@
 body {
   margin: 1rem;
   background-color: #141414;
+  width: 100vw;
 }
 
 .main-grid {
@@ -14,7 +15,7 @@ body {
 }
 
 .nav-cont {
-  background-image: url("/job-werk/assets/images/hero.jpg");
+  background-image: url('/assets/images/hero.jpg');
   width: 100vw;
   grid-column: 1 / 4;
   background-size: cover;
@@ -60,7 +61,7 @@ body {
   grid-row: 2 / 3;
   text-align: center;
   justify-content: center;
-  background-image: url("/job-werk/assets/images/electrical.jpg");
+  background-image: url('/assets/images/electrical.jpg');
   background-size: cover;
   height: 100%;
   cursor: pointer;
@@ -70,7 +71,7 @@ body {
   grid-row: 3 / 4;
   text-align: center;
   justify-content: center;
-  background-image: url("/job-werk/assets/images/paint.jpg");
+  background-image: url('/assets/images/paint.jpg');
   background-size: cover;
   cursor: pointer;
   color: black;
@@ -88,7 +89,7 @@ body {
   text-align: center;
   border: solid black;
   justify-content: center;
-  background-image: url("/job-werk/assets/images/plumbing.jpg");
+  background-image: url('/assets/images/plumbing.jpg');
   background-size: cover;
   cursor: pointer;
 }
@@ -98,7 +99,7 @@ body {
   text-align: center;
   border: solid black;
   justify-content: center;
-  background-image: url("/job-werk/assets/images/carpentry.jpg");
+  background-image: url('/assets/images/carpentry.jpg');
   background-size: cover;
   cursor: pointer;
 }
