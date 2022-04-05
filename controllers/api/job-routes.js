@@ -1,25 +1,17 @@
 const router = require('express').Router();
-const { User, Industry, Job, Vote } = require('../../models');
+const {Job} = require('../../models');
 
 // get all jobs
 router.get('/', (req, res) => {
   Job.findAll({
     attributes: [
-      'id',
-      'job_url',
+
       'title',
-      'created_at',
-      [
-        sequelize.literal(
-          '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
-        ),
-        'vote_count',
-      ],
-    ],
-    include: [
-      { model: Industry, attributes: ['name'] },
-      { model: User, attributes: ['username'] },
-    ],
+      'description', 
+      'pay_rate',  
+      'industry_id',
+    ]
+
   })
     .then((dbJobData) => res.json(dbJobData))
     .catch((err) => {
@@ -31,24 +23,12 @@ router.get('/', (req, res) => {
 // get one job
 router.get('/:id', (req, res) => {
   Job.findOne({
-    where: { id: req.params.id },
-
     attributes: [
-      'id',
-      'post_url',
       'title',
-      'created_at',
-      [
-        sequelize.literal(
-          '(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'
-        ),
-        'vote_count',
-      ],
-    ],
-    include: [
-      { model: Industry, attributes: ['name'] },
-      { model: User, attributes: ['username'] },
-    ],
+      'description', 
+      'pay_rate', 
+      'industry_id',],
+    where: { id: req.params.id },
   })
     .then((dbJobData) => {
       if (!dbJobData) {
