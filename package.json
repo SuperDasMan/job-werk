@@ -2,9 +2,10 @@
   "name": "job-werk",
   "version": "1.0.0",
   "description": "An app to post and search jobs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,14 @@
   "homepage": "https://github.com/SuperDasMan/job-werk#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
     "console.table": "^0.10.0",
-    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "express-session": "^1.17.2",
     "firebase": "^9.6.10",
+    "firebaseui": "^6.0.1",
     "inquirer": "^8.2.1",
     "jest": "^27.5.1",
     "mysql2": "^2.3.3",

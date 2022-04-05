@@ -1,0 +1,30 @@
+<section>
+  <h2>Create New Job</h2>
+
+  <form class="new-job-form">
+    <div>
+      <label for="job-title">Title</label>
+      <input type="text" id="job-title" name="job-title" />
+    </div>
+    <div>
+      <label for="job-url">Link</label>
+      <input id="job-url" name="job-url" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+{{#if job.length}}
+<section>
+  <h2>Your Jobs</h2>
+  <ol>
+    {{#each jobs as |job|}}
+    <li>
+      {{> job-info job}}
+      <a href="/dashboard/edit/{{job.id}}" class="edit-link">Edit job</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/add-job.js"></script>
