@@ -16,9 +16,9 @@ router.post('/', (req, res) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up
-      req.session.save(()=> {
-        req.session.loggedIn = true
-      })
+      req.session.save(() => {
+        req.session.loggedIn = true;
+      });
       const user = userCredential.user;
       res.json(user);
     })
@@ -31,14 +31,14 @@ router.post('/', (req, res) => {
 });
 
 // Sign In
-router.post('/login', (req, res) => {
+router.post('/login', auth, (req, res) => {
   const { email, password } = req.body;
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      req.session.save(()=> {
-        req.session.loggedIn = true
-      })
+      req.session.save(() => {
+        req.session.loggedIn = true;
+      });
       const user = userCredential.user;
       res.json(user);
     })
@@ -51,13 +51,14 @@ router.post('/login', (req, res) => {
 });
 
 // Sign Out
-router.post('/logout', (req, res) => {
+router.post('/logout', auth, (req, res) => {
   signOut(auth)
-    .then(() => { 
-       req.session.save(()=> {
-      req.session.loggedIn = false
-      // Sign-out successful.
-    })})
+    .then(() => {
+      req.session.save(() => {
+        req.session.loggedIn = false;
+        // Sign-out successful.
+      });
+    })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;

@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
+const auth = require('../controllers/authroutes');
 
-const { Industry, Job, Vote } = require('../../models');
+const { User, Industry, Job, Vote } = require('../../models');
 
 // get all jobs
 router.get('/', (req, res) => {
@@ -15,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // get one job
-router.get('/:id', (req, res) => {
+router.get('/:id', auth, (req, res) => {
   Job.findOne({
     where: { id: req.params.id },
     include: [{ model: Industry }, { model: Job }],
@@ -34,7 +36,7 @@ router.get('/:id', (req, res) => {
 });
 
 // post a job
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
   Job.create({
     title: req.body.title,
     description: req.body.description,
@@ -65,7 +67,7 @@ router.post('/', (req, res) => {
 });
 
 // update a job
-router.put('/:id', (req, res) => {
+router.put('/:id', auth, (req, res) => {
   Job.update(
     {
       id: req.body.id,
@@ -91,7 +93,7 @@ router.put('/:id', (req, res) => {
 });
 
 //delete job
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
   Job.destroy({
     where: {
       id: req.params.id,

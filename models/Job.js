@@ -17,7 +17,7 @@ class Job extends Model {
           // 'job_url',
           'title',
           'pay_rate',
-          'created_at',
+          // 'created_at',
 
           [
             sequelize.literal(
@@ -87,7 +87,7 @@ Job.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'job',

@@ -1,8 +1,11 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
+const auth = require('../controllers/authroutes');
+
 const { User, Industry, Job, Vote } = require('../../models');
 
 // GET /api/users
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] },
   })
@@ -14,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // GET /api/users/1
-router.get('/:id', (req, res) => {
+router.get('/:id', auth, (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
@@ -23,7 +26,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Job,
-        attributes: ['id', 'title', 'job_url', 'created_at'],
+        attributes: ['id', 'title' /*, 'job_url', 'created_at'*/],
       },
       {
         model: Industry,
@@ -103,7 +106,7 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.post('/logout', (req, res) => {
+router.post('/logout', auth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -135,7 +138,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/users/1
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,
