@@ -1,16 +1,20 @@
 const router = require('express').Router();
+
 const { Industry, Job } = require('../../models');
+
 
 // get all industries
 router.get('/', (req, res) => {
   Industry.findAll({
     attributes: ['id', 'name'],
+
     include: [
       {
         model: Job,
         attributes: ['id', 'job_url', 'title', 'created_at'],
       },
     ],
+
   })
     .then((dbIndustryData) => res.json(dbIndustryData))
     .catch((err) => {
@@ -25,12 +29,14 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
+
     include: [
       {
         model: Job,
         attributes: ['id', 'job_url', 'title', 'created_at'],
       },
     ],
+
   })
     .then((dbIndustryData) => {
       if (!dbIndustryData) {
@@ -44,5 +50,6 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 module.exports = router;

@@ -57,6 +57,7 @@ router.get('/dashboard', withAuth, (req, res) => {
       // "job_url",
       'title',
       // "created_at",
+
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
@@ -105,6 +106,7 @@ router.get('/job/:id', (req, res) => {
       // "job_url",
       'title',
       // "created_at",
+
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
