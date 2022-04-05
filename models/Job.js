@@ -17,7 +17,7 @@ class Job extends Model {
           'job_url',
           'title',
           'pay_rate',
-          // "created_at",
+          'created_at',
           [
             sequelize.literal(
               '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
@@ -86,6 +86,7 @@ Job.init(
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'job',
