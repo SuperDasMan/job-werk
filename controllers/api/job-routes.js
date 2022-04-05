@@ -1,16 +1,13 @@
 const router = require('express').Router();
-const {Job} = require('../../models');
+
+const { Industry, Job, Vote } = require('../../models');
+
 
 // get all jobs
 router.get('/', (req, res) => {
   Job.findAll({
-    attributes: [
 
-      'title',
-      'description', 
-      'pay_rate',  
-      'industry_id',
-    ]
+    include: [{ model: Industry }, { model: Job }],
 
   })
     .then((dbJobData) => res.json(dbJobData))
@@ -23,12 +20,10 @@ router.get('/', (req, res) => {
 // get one job
 router.get('/:id', (req, res) => {
   Job.findOne({
-    attributes: [
-      'title',
-      'description', 
-      'pay_rate', 
-      'industry_id',],
+
     where: { id: req.params.id },
+    include: [{ model: Industry }, { model: Job }],
+
   })
     .then((dbJobData) => {
       if (!dbJobData) {
@@ -42,6 +37,7 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 // post a job
 router.post('/', (req, res) => {
@@ -73,5 +69,6 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 module.exports = router;

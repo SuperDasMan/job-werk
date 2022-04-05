@@ -31,7 +31,9 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Job,
-        attributes: ['id'],
+
+        attributes: ['title'],
+
         through: Vote,
         as: 'voted_jobs',
       },

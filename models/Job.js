@@ -18,6 +18,7 @@ class Job extends Model {
           'title',
           'pay_rate',
           'created_at',
+
           [
             sequelize.literal(
               '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
