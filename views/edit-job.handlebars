@@ -6,13 +6,14 @@
   <form class='edit-job-form'>
     <div>
       <input name='job-title' type='text' value='{{job.title}}' />
-      <span>({{format_url job.job_url}})</span>
+      <span><a href='/dashboard/job/{{job.id}}' target='_blank'></a></span>
     </div>
     <div>
       {{job.vote_count}}
       {{format_plural 'point' job.vote_count}}
-      by you on
-      {{format_date job.created_at}}
+      by you
+      {{! on }}
+      {{!-- {{format_date job.created_at}} --}}
       |
     </div>
     <button type='submit'>Save job</button>

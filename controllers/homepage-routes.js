@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Industry, Job, Vote } = require('../models');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
+const auth = require('../controllers/authroutes');
 
 router.get('/', (req, res) => {
   console.log('======================');
@@ -10,7 +11,7 @@ router.get('/', (req, res) => {
       'id',
       // "job_url",
       'title',
-      'created_at',
+      // 'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
@@ -48,14 +49,14 @@ router.get('/', (req, res) => {
 //   res.render('login');
 // });
 
-router.get('/dashboard', withAuth, (req, res) => {
+router.get('/dashboard', auth, (req, res) => {
   console.log('======================');
   Job.findAll({
     attributes: [
       'id',
       // "job_url",
       'title',
-      'created_at',
+      // 'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
@@ -94,7 +95,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/job/:id', (req, res) => {
+router.get('/job/:id', auth, (req, res) => {
   Job.findOne({
     where: {
       id: req.params.id,
@@ -103,7 +104,7 @@ router.get('/job/:id', (req, res) => {
       'id',
       // 'job_url',
       'title',
-      'created_at',
+      // 'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'

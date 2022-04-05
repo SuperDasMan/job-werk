@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
+const auth = require('../controllers/authroutes');
 
 const { Industry, Job } = require('../../models');
 
@@ -10,7 +12,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Job,
-        attributes: ['id', 'job_url', 'title', 'created_at'],
+        attributes: ['id', 'title' /*, 'job_url','created_at'*/],
       },
     ],
   })
@@ -31,7 +33,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Job,
-        attributes: ['id', 'job_url', 'title', 'created_at'],
+        attributes: ['id', 'title' /*, 'job_url', 'created_at'*/],
       },
     ],
   })
@@ -49,7 +51,7 @@ router.get('/:id', (req, res) => {
 });
 
 //Post
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
   Industry.create({
     id: req.body.id,
     name: req.body.name,
@@ -73,7 +75,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', auth, (req, res) => {
   Industry.update(
     {
       id: req.body.id,
@@ -99,7 +101,7 @@ router.put('/:id', (req, res) => {
 });
 
 //delete industry
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
   Industry.destroy({
     where: {
       id: req.params.id,
