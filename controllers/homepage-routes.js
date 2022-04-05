@@ -54,9 +54,9 @@ router.get('/dashboard', withAuth, (req, res) => {
   Job.findAll({
     attributes: [
       'id',
-      // "job_url",
+      'job_url',
       'title',
-      // "created_at",
+      'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
@@ -102,9 +102,9 @@ router.get('/job/:id', (req, res) => {
     },
     attributes: [
       'id',
-      // "job_url",
+      'job_url',
       'title',
-      // "created_at",
+      'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
