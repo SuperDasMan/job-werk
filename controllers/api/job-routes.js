@@ -2,13 +2,10 @@ const router = require('express').Router();
 
 const { Industry, Job, Vote } = require('../../models');
 
-
 // get all jobs
 router.get('/', (req, res) => {
   Job.findAll({
-
     include: [{ model: Industry }, { model: Job }],
-
   })
     .then((dbJobData) => res.json(dbJobData))
     .catch((err) => {
@@ -20,10 +17,8 @@ router.get('/', (req, res) => {
 // get one job
 router.get('/:id', (req, res) => {
   Job.findOne({
-
     where: { id: req.params.id },
     include: [{ model: Industry }, { model: Job }],
-
   })
     .then((dbJobData) => {
       if (!dbJobData) {
@@ -37,7 +32,6 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 // post a job
 router.post('/', (req, res) => {
@@ -70,5 +64,50 @@ router.post('/', (req, res) => {
     });
 });
 
+// update a job
+router.put('/:id', (req, res) => {
+  Job.update(
+    {
+      id: req.body.id,
+      name: req.body.name,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((dbJobData) => {
+      if (!dbJobData) {
+        res.status(404).json({ message: 'No Job found with this id' });
+        return;
+      }
+      res.json(dbJobData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//delete job
+router.delete('/:id', (req, res) => {
+  Job.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbJobData) => {
+      if (!dbJobData) {
+        res.status(404).json({ message: 'No Job found with this id!' });
+        return;
+      }
+      res.json(dbJobData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
