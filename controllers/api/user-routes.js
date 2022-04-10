@@ -1,11 +1,20 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const auth = require('../controllers/authroutes');
-
+const withAuth = require('../../utils/auth');
+const {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} = require('firebase/auth');
+const firebaseConfig = require('../../config/firebase');
+const { initializeApp } = require('firebase/app');
+initializeApp(firebaseConfig);
+const auth = getAuth();
 const { User, Industry, Job, Vote } = require('../../models');
 
 // GET /api/users
-router.get('/', auth, (req, res) => {
+router.get('/', withAuth, (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] },
   })
@@ -17,7 +26,7 @@ router.get('/', auth, (req, res) => {
 });
 
 // GET /api/users/1
-router.get('/:id', auth, (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
@@ -26,7 +35,7 @@ router.get('/:id', auth, (req, res) => {
     include: [
       {
         model: Job,
-        attributes: ['id', 'title' /*, 'job_url', 'created_at'*/],
+        attributes: ['id', 'title', 'job_url', 'created_at'],
       },
       {
         model: Industry,
@@ -57,6 +66,8 @@ router.get('/:id', auth, (req, res) => {
 
 // POST /api/users
 router.post('/signup', (req, res) => {
+  const { email, password } = req.body;
+  createUserWithEmailAndPassword(auth, email, password);
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -78,6 +89,8 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  signInWithEmailAndPassword(auth, email, password);
   User.findOne({
     where: {
       email: req.body.email,
@@ -106,7 +119,9 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.post('/logout', auth, (req, res) => {
+router.post('/logout', (req, res) => {
+  signOut(auth);
+
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -117,7 +132,7 @@ router.post('/logout', auth, (req, res) => {
 });
 
 // PUT /api/users/1
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -138,7 +153,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/users/1
-router.delete('/:id', auth, (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,

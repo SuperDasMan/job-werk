@@ -11,15 +11,11 @@
     <div>
       {{job.vote_count}}
       {{format_plural 'point' job.vote_count}}
-      by you
-      {{! on }}
-      {{!-- {{format_date job.created_at}} --}}
+      by you on
+      {{format_date job.created_at}}
       |
     </div>
     <button type='submit'>Save job</button>
     <button type='button' class='delete-job-btn'>Delete job</button>
   </form>
 </article>
-
-<script src='/javascript/edit-job.js'></script>
-<script src='/javascript/delete-job.js'></script>

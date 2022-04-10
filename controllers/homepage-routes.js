@@ -1,17 +1,16 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Industry, Job, Vote } = require('../models');
-// const withAuth = require('../utils/auth');
-const auth = require('../controllers/authroutes');
+const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
   console.log('======================');
   Job.findAll({
     attributes: [
       'id',
-      // "job_url",
+      'job_url',
       'title',
-      // 'created_at',
+      'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
@@ -41,22 +40,22 @@ router.get('/', (req, res) => {
     });
 });
 
-// router.get('/login', (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect('/');
-//     return;
-//   }
-//   res.render('login');
-// });
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
 
-router.get('/dashboard', auth, (req, res) => {
+router.get('/dashboard', withAuth, (req, res) => {
   console.log('======================');
   Job.findAll({
     attributes: [
       'id',
-      // "job_url",
+      'job_url',
       'title',
-      // 'created_at',
+      'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
@@ -86,25 +85,16 @@ router.get('/dashboard', auth, (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/dashboard');
-    return;
-  }
-
-  res.render('login');
-});
-
-router.get('/job/:id', auth, (req, res) => {
+router.get('/job/:id', withAuth, (req, res) => {
   Job.findOne({
     where: {
       id: req.params.id,
     },
     attributes: [
       'id',
-      // 'job_url',
+      'job_url',
       'title',
-      // 'created_at',
+      'created_at',
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM vote WHERE job.id = vote.job_id)'
