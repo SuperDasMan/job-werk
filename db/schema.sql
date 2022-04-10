@@ -24,6 +24,7 @@ CREATE TABLE job (
   title VARCHAR(50) NOT NULL,
   description VARCHAR(500) NOT NULL,
   pay_rate VARCHAR(10) NOT NULL,
+  job_url VARCHAR(100),
   user_id INT,
   INDEX user_ind (user_id),
   CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,

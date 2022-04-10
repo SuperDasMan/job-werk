@@ -41,24 +41,24 @@ Job.hasMany(Vote, {
   foreignKey: 'job_id',
 });
 
-Industry.belongsToMany(User, {
-  through: Job,
-  as: 'created_jobs',
-  foreignKey: 'job_id',
-});
-
-// Industry.hasMany(Job, {
-//   foreignKey: "industry_id",
+// Industry.belongsToMany(User, {
+//   through: Job,
+//   as: 'created_jobs',
+//   foreignKey: 'job_id',
 // });
 
-User.belongsToMany(Industry, {
-  through: Job,
-  as: 'created jobs',
-  foreignKey: 'user_id',
+Industry.hasMany(Job, {
+  foreignKey: 'industry_id',
 });
 
-// Job.belongsTo(Industry, {
-//   foreignKey: "industry_id",
+// User.belongsToMany(Industry, {
+//   through: Job,
+//   as: 'created jobs',
+//   foreignKey: 'user_id',
 // });
+
+Job.belongsTo(Industry, {
+  foreignKey: 'industry_id',
+});
 
 module.exports = { User, Industry, Job, Vote };

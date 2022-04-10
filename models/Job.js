@@ -14,10 +14,10 @@ class Job extends Model {
         },
         attributes: [
           'id',
-          // 'job_url',
+          'job_url',
           'title',
           'pay_rate',
-          // 'created_at',
+          'created_at',
 
           [
             sequelize.literal(
@@ -62,14 +62,14 @@ Job.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // // give job post a page to view
-    // job_url: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     isURL: true,
-    //   },
-    // },
+    // give job post a page to view
+    job_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isURL: true,
+      },
+    },
     // user id of creator
     user_id: {
       type: DataTypes.INTEGER,

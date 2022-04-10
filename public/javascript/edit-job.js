@@ -12,7 +12,7 @@ const response = await fetch(`/api/jobs/${id}`, {
   method: 'PUT',
   body: JSON.stringify({
     job_id,
-    comment_text,
+    description,
   }),
   headers: {
     'Content-Type': 'application/json',
