@@ -1,20 +1,11 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JobWerk</title>
-    <link rel="stylesheet" href="../public/stylesheets/style.css" />
-  </head>
-  <body>
+<body>
     <div class="main-grid">
       <div class="nav-cont">
-        <nav class="nav">
+        {{!-- <nav class="nav">
           <a href="#" class="about">About Us</a>
           <a href="#" class="login" role="navoption">Log In</a>
           <a href="#" class="ac-btn" role="navoption">Sign Up</a>
-        </nav>
+        </nav> --}}
       </div>
       <div class="slogan">
         <h1 class="s-text">
@@ -27,7 +18,8 @@
       <div class="ind-cont">
         <h2 class="tile-title">Select an Industry</h2>
         <div class="elec-tile">
-          <div class="elec-btn">Electrical</div>
+          Electrical
+          <div class="elec-btn"></div>
         </div>
         <div class="pnt-tile">
           Painting
@@ -43,16 +35,15 @@
         </div>
       </div>
       <div class="res-cont">
-        <div class="res">Job Result 1</div>
-        <div class="res">Job Result 2</div>
-        <div class="res">Job Result 3</div>
-        <div class="res">Job Result 4</div>
-        <div class="res">Job Result 5</div>
-        <div class="res">Job Result 6</div>
-        <div class="res">Job Result 7</div>
-        <div class="res">Job Result 8</div>
+        <div class="results">Jobs Available</div>
+        <ol class="job-list">
+          {{#each jobs as |job|}}
+            <li>
+              {{> job-info job }}
+            </li>
+          {{/each}}
+        </ol>
       </div>
-      <div class="ratings">Got feedback for a customer or werker?</div>
+      <div class="ratings">Got feedback for a customer or worker?</div>
     </div>
   </body>
-</html> -->
