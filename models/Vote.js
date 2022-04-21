@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const sequelize = require('../config/connection');
+const { Model, DataTypes } = require('sequelize');
 
 class Vote extends Model {}
 
@@ -13,15 +13,15 @@ Vote.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
-        key: "id",
+        model: 'user',
+        key: 'id',
       },
     },
-    post_id: {
+    job_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "job",
-        key: "id",
+        model: 'job',
+        key: 'id',
       },
     },
   },
@@ -30,7 +30,7 @@ Vote.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "vote",
+    modelName: 'vote',
   }
 );
 
